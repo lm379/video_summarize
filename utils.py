@@ -9,10 +9,10 @@ class Utils:
         )
 
     def call(self, query: str):
-        response = self.client.chat.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             model=MODEL,
             messages=[{"role": "user", "content": query}]
         )
-        return True, response.choices[0].message['content']
+        return True, response.choices[0].message.content
 
 OpenaiMgr = Utils(api_key=OPENAI_API_KEY, base_url=OPENAI_API_BASE)
