@@ -27,6 +27,14 @@ mkdir -p ./model
 wget https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt -O ./model/large-v2.pt
 ```
 
+### 修改配置文件
+
+```bash
+mv config.example.py config.py
+```
+
+并添加自己的 `OPENAI_API_KEY` 和其他参数
+
 ## 特点
 
 1. 基于原始项目修改，使用 OpenAI 官方API，也可以使用 X-AI 之类的兼容 OpenAI 的大模型
