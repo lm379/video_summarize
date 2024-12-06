@@ -39,13 +39,13 @@ def ok_handler(*args):
 gradio_root = gr.Blocks(title=TITLE)
 with gradio_root:
     with gr.Row():
-        with gr.Column(scale=0.3):
-            curVideo = gr.Video(type="file", label="In", interactive=True)
-            prompt_txt = gr.Textbox(label="提示词",lines=12,max_lines = 12,value=prompt_txt_value) 
-            ok_clik = gr.Button(label="总结", value="总结",visible = True) 
-        with gr.Column(scale=0.7, visible=True):    
-            video_box = gr.Textbox(label="本地总结",info="总结内容",lines=30,max_lines = 30,value=video_text,)  
-    ok_clik.click(fn=ok_handler,inputs=[curVideo,prompt_txt],outputs=[video_box])
+        with gr.Column(scale=1):  # 修改 scale 为整数
+            curVideo = gr.Video(label="In")  # 去掉 type 参数
+            prompt_txt = gr.Textbox(label="提示词", lines=12, max_lines=12, value=prompt_txt_value) 
+            ok_clik = gr.Button(value="总结", visible=True)  # 去掉 label 参数
+        with gr.Column(scale=1, visible=True):  # 修改 scale 为整数
+            video_box = gr.Textbox(label="本地总结", info="总结内容", lines=30, max_lines=30, value=video_text)  
+    ok_clik.click(fn=ok_handler, inputs=[curVideo, prompt_txt], outputs=[video_box])
     
     
 if __name__ == '__main__':
