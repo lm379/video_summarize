@@ -1,8 +1,5 @@
 openai-whisper
-g4f
+openai
 ffmpeg-python
 gradio
 PyExecJS
-# -i https://pypi.douban.com/simple
-# pip uninstall charset-normalizer
-# conda install -c conda-forge charset-normalizer

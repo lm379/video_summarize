@@ -1,20 +1,31 @@
 # video_summarize
-video_summarize（视频总结：上传视频通过prompt对视频内容总结输出）
 
-安装：
-python3.9
+video_summarize
+> 视频总结：上传视频通过prompt对视频内容总结输出
 
-ffmpeg
+## 环境
 
-pip install -r requirements.txt 
+`Ubuntu 22.04` `Python3.9` `FFmpeg`
 
-注意：需要下载large-v2.pt模型放到model下！
+### 安装依赖
 
-可扩展：
+```bash
+pip3 install -r requirements.txt 
+```
 
-1.现在用的GPT是 gpt4free 可能会断开需要翻墙，可以换成自己的。修改FreeGPT.py
+**注意：需要下载 `large-v2.pt` 模型放到 `model` 下！**
 
-2.可扩展：在线视频转换总结，excel,ppt等总结。思路已经提供，尽情修改吧！
+### 模型下载
+
+```bash
+wget https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt -O ./model/large-v2.pt
+```
+
+## 特点
+
+1. 基于原始项目修改，使用 OpenAI 官方API，也可以使用 X-AI 之类的兼容 OpenAI 的大模型
+
+2. 可扩展：在线视频转换总结，excel, ppt等总结。思路已经提供，尽情修改吧！
 
 
 

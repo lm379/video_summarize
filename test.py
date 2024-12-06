@@ -1,9 +1,16 @@
-import g4f
+from openai import OpenAI
+from config import OPENAI_API_KEY, OPENAI_API_BASE, MODEL
 
-chat_completion = g4f.ChatCompletion.create(
-                         model="gpt-3.5-turbo",
-                        messages=[{"role": "user", "content": "你是谁？"}],
-                        provider=	g4f.Provider.Aivvm,
-                        #  stream=True,
-                    )  
-print(chat_completion)
+client = OpenAI(
+    api_key=OPENAI_API_KEY,
+    base_url=OPENAI_API_BASE,
+)
+
+completion = client.chat.completions.create(
+    model=MODEL,
+    messages=[
+        {"role": "user", "content": "你是谁？"},
+    ],
+)
+
+print(completion.choices[0].message)

@@ -2,7 +2,7 @@ import gradio as gr
 import argparse
 import whisper
 import os
-from FreeGPT import freeGPTMgr
+from utils import OpenaiMgr
 
 TITLE = "视频总结"
 prompt_txt_value = "请总结下面内容，要求如下：\n1.简洁，要陈列方式\n2.字数在300字内。\n内容如下:"
@@ -11,11 +11,11 @@ video_text = ""
 
 # Whisper模型
 WHISPER_MODEL = "large-v2.pt"
-PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
 UP_PROJECT_PATH = os.path.join(PROJECT_PATH, "video_summarize")
 MODE_PATH = os.path.join(UP_PROJECT_PATH, "model")
-print(MODE_PATH+"\\" + WHISPER_MODEL)
-whisper_model = whisper.load_model("F:\\Video_TTS\\video_summarize\\model\\large-v2.pt")
+print(MODE_PATH+"/" + WHISPER_MODEL)
+whisper_model =  whisper.load_model(MODE_PATH+ "/" + WHISPER_MODEL)
 
 def whisper_to_str(content):
     return whisper_model.transcribe(content)  
@@ -31,7 +31,7 @@ def ok_handler(*args):
     video_content = whisper_to_str(video_path)
     question = prompt + video_content["text"]
     print("2.GPT总结文案")
-    s1,content = freeGPTMgr.call(question)
+    s1,content = OpenaiMgr.call(question)
     print(content)
     return content
     
